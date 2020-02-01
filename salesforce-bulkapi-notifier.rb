@@ -126,10 +126,10 @@ end
 
 logger = Logger.new(STDOUT)
 logger.datetime_format = '%Y/%m/%dT%H:%M:%S.%06d'
-logger.info('Starting salesforce job watcher')
+logger.info('Starting salesforce bulkapi notifier')
 
 Signal.trap(:INT) do
-  puts 'Stopping salesforce job watcher'
+  puts 'Stopping salesforce bulkapi notifier'
   exit 0
 end
 

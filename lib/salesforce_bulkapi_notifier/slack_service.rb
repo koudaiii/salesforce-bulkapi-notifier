@@ -8,7 +8,7 @@ module SalesforceBulkapiNotifier
       @slack.auth_test
     end
 
-    def send(channels, text)
+    def notify(channels, text)
       channels.split(',').each do |channel|
         @slack.chat_postMessage(channel: "#{channel}", text: "#{text}", as_user: true)
       end

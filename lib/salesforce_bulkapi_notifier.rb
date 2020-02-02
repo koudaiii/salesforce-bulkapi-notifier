@@ -35,7 +35,7 @@ module SalesforceBulkapiNotifier
 
           logger.info(job_status)
           logger.info(job_info)
-          slack.send(slack_channel_name, "Job created by #{job_status[:user_name]} using bulkapi failed due to '#{job_status[:message]}'.\nPlease check #{salesforce.instance_url}/#{job_info['id']}")
+          slack.notify(slack_channel_name, "Job created by #{job_status[:user_name]} using bulkapi failed due to '#{job_status[:message]}'.\nPlease check #{salesforce.instance_url}/#{job_info['id']}")
         end
         sleep interval_seconds.second
       end

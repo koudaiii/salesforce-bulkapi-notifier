@@ -43,4 +43,4 @@ RUN bundle install \
     --jobs 8
 
 COPY . /app
-CMD ["bundle", "exec", "ruby", "/app/salesforce-bulkapi-notifier.rb"]
+CMD ["bundle", "exec", "bin/runner"]

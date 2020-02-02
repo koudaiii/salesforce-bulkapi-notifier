@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+
+if ENV['DOCKER_LOGS']
+  $stdout = IO.new(IO.sysopen("/proc/1/fd/1", "w"),"w")
+  $stdout.sync = true
+  STDOUT = $stdout
+
+  $stderr = IO.new(IO.sysopen("/proc/1/fd/1", "w"),"w")
+  $stderr.sync = true
+  STDERR = $stderr
+end
+
+Signal.trap(:INT) do
+  puts 'Stopping salesforce bulkapi notifier'
+  exit 0
+end
+
+require 'dotenv'
+
+Dotenv.load
+raise 'Missing ENV[SLACK_API_TOKEN]!' unless ENV['SLACK_API_TOKEN']
+raise 'Missing ENV[SLACK_CHANNEL_NAME]!' unless ENV['SLACK_CHANNEL_NAME']
+raise 'Missing ENV[SALESFORCE_HOST]!' unless ENV['SALESFORCE_HOST']
+raise 'Missing ENV[SALESFORCE_USER_ID]!' unless ENV['SALESFORCE_USER_ID']
+raise 'Missing ENV[SALESFORCE_PASSWORD]!' unless ENV['SALESFORCE_PASSWORD']
+raise 'Missing ENV[SALESFORCE_CLIENT_ID]!' unless ENV['SALESFORCE_CLIENT_ID']
+raise 'Missing ENV[SALESFORCE_CLIENT_SECRET]!' unless ENV['SALESFORCE_CLIENT_SECRET']
+
+require_relative '../lib/salesforce_bulkapi_notifier'
+
+SalesforceBulkapiNotifier.configure do |c|
+  c.slack_api_token = ENV['SLACK_API_TOKEN']
+  c.slack_channel_name = ENV['SLACK_CHANNEL_NAME']
+  c.salesforce_host = ENV['SALESFORCE_HOST']
+  c.salesforce_user_id = ENV['SALESFORCE_USER_ID']
+  c.salesforce_password = ENV['SALESFORCE_PASSWORD']
+  c.salesforce_client_id = ENV['SALESFORCE_CLIENT_ID']
+  c.salesforce_client_secret = ENV['SALESFORCE_CLIENT_SECRET']
+  c.error_rate = ENV['ERROR_RATE'].to_i || 10
+  c.interval_seconds = ENV['INTERVAL_SECONDS'].to_i || 60
+  c.logger.level = :debug
+end
+
+exit SalesforceBulkapiNotifier.execute

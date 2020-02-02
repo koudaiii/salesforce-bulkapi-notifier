@@ -31,7 +31,6 @@ module SalesforceBulkapiNotifier
       end
 
       self.logger = ::Logger.new(STDOUT)
-      logger.datetime_format = '%Y/%m/%dT%H:%M:%S.%06d'
     end
 
     def setup

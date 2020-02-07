@@ -22,6 +22,16 @@ module SalesforceBulkapiNotifier
     end
 
     def self.extended(base)
+      Dotenv.load
+
+      raise 'Missing ENV[SLACK_API_TOKEN]!' unless ENV['SLACK_API_TOKEN']
+      raise 'Missing ENV[SLACK_CHANNEL_NAME]!' unless ENV['SLACK_CHANNEL_NAME']
+      raise 'Missing ENV[SALESFORCE_HOST]!' unless ENV['SALESFORCE_HOST']
+      raise 'Missing ENV[SALESFORCE_USER_ID]!' unless ENV['SALESFORCE_USER_ID']
+      raise 'Missing ENV[SALESFORCE_PASSWORD]!' unless ENV['SALESFORCE_PASSWORD']
+      raise 'Missing ENV[SALESFORCE_CLIENT_ID]!' unless ENV['SALESFORCE_CLIENT_ID']
+      raise 'Missing ENV[SALESFORCE_CLIENT_SECRET]!' unless ENV['SALESFORCE_CLIENT_SECRET']
+
       base.reset
     end
 

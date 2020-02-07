@@ -103,7 +103,7 @@ DEPENDENCIES
   pry
   pry-byebug
   rspec
-  salesforce-bulkapi-notifier (~> 0.0.1.pre)
+  salesforce-bulkapi-notifier (~> 0.0.1)
 
 BUNDLED WITH
    2.1.4

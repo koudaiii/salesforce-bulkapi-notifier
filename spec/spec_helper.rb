@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "salesforce_bulkapi_notifier"
+require "salesforce-bulkapi-notifier"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

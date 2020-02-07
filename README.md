@@ -13,7 +13,6 @@ salesforce-bulkapi-notifier notify to slack when failed jobs. e.g. When job stat
   - [Table of Contents](#table-of-contents)
   - [Requirements](#requirements)
   - [Installation](#installation)
-    - [From source](#from-source)
     - [Run in a Docker container](#run-in-a-docker-container)
   - [Usage](#usage)
   - [Options](#options)
@@ -21,6 +20,7 @@ salesforce-bulkapi-notifier notify to slack when failed jobs. e.g. When job stat
   - [Contribution](#contribution)
   - [Author](#author)
   - [License](#license)
+  - [Code of Conduct](#code-of-conduct)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 
@@ -30,9 +30,23 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 - Set env
 
 ## Installation
-### From source
 
-TBD
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'salesforce-bulkapi-notifier'
+```
+And then execute:
+
+```console
+$ bundle
+```
+
+Or install it yourself as:
+
+```console
+$ gem install salesforce-bulkapi-notifier
+```
 
 ### Run in a Docker container
 
@@ -48,13 +62,13 @@ TBD
 
 ## Development
 
-Clone this repository and build using `bundle install`.
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-```shell-session
-$ bundle install
-```
+To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contribution
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/koudaiii/salesforce-bulkapi-notifier. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 1. Fork ([https://github.com/koudaiii/salesforce-bulkapi-notifier/fork](https://github.com/koudaiii/salesforce-bulkapi-notifier/fork))
 1. Create a feature branch
@@ -69,4 +83,8 @@ $ bundle install
 
 ## License
 
-[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+The gem is available as open source under the terms of the [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+
+## Code of Conduct
+
+Everyone interacting in the Salesforce-bulkapi-notifier project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/koudaiii/salesforce-bulkapi-notifier/blob/master/CODE_OF_CONDUCT.md).

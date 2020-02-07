@@ -1,10 +1,10 @@
-module SalesforceBulkapiNotifier
+module SalesforceBulkAPINotifier
   class SalesforceService
     API_VERSION = 47.0
     attr_reader :instance_url
 
     def initialize
-      con = Faraday.new(url: "https://#{SalesforceBulkapiNotifier.salesforce_host}") do |c|
+      con = Faraday.new(url: "https://#{SalesforceBulkAPINotifier.salesforce_host}") do |c|
         c.adapter :httpclient
         c.request :json
       end
@@ -12,10 +12,10 @@ module SalesforceBulkapiNotifier
       # https://help.salesforce.com/articleView?id=remoteaccess_oauth_username_password_flow.htm&language=ja&type=0
       response = con.post("/services/oauth2/token", {
         grant_type: :password,
-        username: SalesforceBulkapiNotifier.salesforce_user_id,
-        password: SalesforceBulkapiNotifier.salesforce_password,
-        client_id: SalesforceBulkapiNotifier.salesforce_client_id,
-        client_secret: SalesforceBulkapiNotifier.salesforce_client_secret,
+        username: SalesforceBulkAPINotifier.salesforce_user_id,
+        password: SalesforceBulkAPINotifier.salesforce_password,
+        client_id: SalesforceBulkAPINotifier.salesforce_client_id,
+        client_secret: SalesforceBulkAPINotifier.salesforce_client_secret,
         format: :json,
       })
 
@@ -83,9 +83,9 @@ module SalesforceBulkapiNotifier
       if job_info['state'] == 'Failed'
         job_status[:success] = false
         job_status[:message] = "Job state is Failed"
-      elsif error_rate >= SalesforceBulkapiNotifier.error_rate && job_info['state'] == "Closed"
+      elsif error_rate >= SalesforceBulkAPINotifier.error_rate && job_info['state'] == "Closed"
         job_status[:success] = false
-        job_status[:message] = "Error rate is #{error_rate}%. Error percentage is higher than #{SalesforceBulkapiNotifier.error_rate}%"
+        job_status[:message] = "Error rate is #{error_rate}%. Error percentage is higher than #{SalesforceBulkAPINotifier.error_rate}%"
       else
       end
       job_status

@@ -1,8 +1,8 @@
-module SalesforceBulkapiNotifier
+module SalesforceBulkAPINotifier
   class SlackService
     def initialize
       Slack.configure do |config|
-        config.token = SalesforceBulkapiNotifier.slack_api_token
+        config.token = SalesforceBulkAPINotifier.slack_api_token
       end
       @slack ||= Slack::Web::Client.new
       @slack.auth_test

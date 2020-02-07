@@ -1,4 +1,4 @@
-module SalesforceBulkapiNotifier
+module SalesforceBulkAPINotifier
   module Configuration
 
     VALID_CONFIG_KEYS = {

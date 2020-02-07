@@ -10,7 +10,7 @@ require 'faraday_middleware'
 require 'httpclient'
 require 'dotenv'
 
-module SalesforceBulkapiNotifier
+module SalesforceBulkAPINotifier
   extend Configuration
   class << self
     if ENV['DOCKER_LOGS']
@@ -24,20 +24,20 @@ module SalesforceBulkapiNotifier
     end
 
     Signal.trap(:INT) do
-      puts 'Stopping salesforce bulkapi notifier'
+      puts 'Stopping Salesforce BulkAPI Notifier'
       exit 0
     end
 
     Signal.trap('TERM') do
-      puts 'Stopping salesforce bulkapi notifier'
+      puts 'Stopping Salesforce BulkAPI Notifier'
       exit 0
     end
 
     def execute
       setup
 
-      logger.info('Starting salesforce bulkapi notifier')
-      logger.info("Version: #{SalesforceBulkapiNotifier::VERSION}")
+      logger.info('Starting Salesforce BulkAPI Notifier')
+      logger.info("Version: #{SalesforceBulkAPINotifier::VERSION}")
 
       loop do
         jobs = salesforce.get_all_jobs
@@ -56,7 +56,7 @@ module SalesforceBulkapiNotifier
 
           logger.info(job_status)
           logger.info(job_info)
-          slack.notify(slack_channel_name, "Job created by #{job_status[:user_name]} using bulkapi failed due to '#{job_status[:message]}'.\nPlease check #{salesforce.instance_url}/#{job_info['id']}")
+          slack.notify(slack_channel_name, "Job created by #{job_status[:user_name]} using BulkAPI failed due to '#{job_status[:message]}'.\nPlease check #{salesforce.instance_url}/#{job_info['id']}")
         end
         sleep interval_seconds.second
       end

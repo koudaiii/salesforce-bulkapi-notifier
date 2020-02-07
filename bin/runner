@@ -2,7 +2,7 @@
 
 require_relative '../lib/salesforce_bulkapi_notifier'
 
-SalesforceBulkapiNotifier.configure do |c|
+SalesforceBulkAPINotifier.configure do |c|
   c.slack_api_token = ENV['SLACK_API_TOKEN']
   c.slack_channel_name = ENV['SLACK_CHANNEL_NAME']
   c.salesforce_host = ENV['SALESFORCE_HOST']
@@ -15,4 +15,4 @@ SalesforceBulkapiNotifier.configure do |c|
   c.logger.level = :debug
 end
 
-exit SalesforceBulkapiNotifier.execute
+exit SalesforceBulkAPINotifier.execute

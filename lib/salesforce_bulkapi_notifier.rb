@@ -12,6 +12,26 @@ require 'httpclient'
 module SalesforceBulkapiNotifier
   extend Configuration
   class << self
+    if ENV['DOCKER_LOGS']
+      $stdout = IO.new(IO.sysopen("/proc/1/fd/1", "w"),"w")
+      $stdout.sync = true
+      STDOUT = $stdout
+
+      $stderr = IO.new(IO.sysopen("/proc/1/fd/1", "w"),"w")
+      $stderr.sync = true
+      STDERR = $stderr
+    end
+
+    Signal.trap(:INT) do
+      puts 'Stopping salesforce bulkapi notifier'
+      exit 0
+    end
+
+    Signal.trap('TERM') do
+      puts 'Stopping salesforce bulkapi notifier'
+      exit 0
+    end
+
     def execute
       setup
 

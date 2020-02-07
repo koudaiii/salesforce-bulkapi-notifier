@@ -1,11 +1,7 @@
 require 'dotenv'
 require 'salesforce-bulkapi-notifier'
 
-require "pry"; binding.pry
-
 Dotenv.load
-
-
 
 SalesforceBulkAPINotifier.configure do |c|
   c.slack_api_token = ENV['SLACK_API_TOKEN']
@@ -20,4 +16,4 @@ SalesforceBulkAPINotifier.configure do |c|
   c.logger.level = :debug
 end
 
-exit SalesforceBulkAPINotifier.execute
+SalesforceBulkAPINotifier.execute

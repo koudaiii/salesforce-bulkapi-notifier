@@ -4,8 +4,9 @@ source "https://rubygems.org"
 gemspec
 
 group :development do
-  gem "guard"
-  gem "guard-rspec"
+  gem 'dotenv'
+  gem 'guard'
+  gem 'guard-rspec'
   gem 'pry'
   gem 'byebug'
   gem 'pry-byebug'

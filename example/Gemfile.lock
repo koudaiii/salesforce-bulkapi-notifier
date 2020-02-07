@@ -70,8 +70,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.2)
-    salesforce-bulkapi-notifier (0.0.1)
-      dotenv
+    salesforce-bulkapi-notifier (0.0.2)
       faraday
       faraday_middleware
       httpclient
@@ -98,12 +97,13 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  dotenv
   guard
   guard-rspec
   pry
   pry-byebug
   rspec
-  salesforce-bulkapi-notifier (~> 0.0.1)
+  salesforce-bulkapi-notifier (~> 0.0.2)
 
 BUNDLED WITH
    2.1.4

@@ -22,7 +22,6 @@ module SalesforceBulkAPINotifier
     end
 
     def self.extended(base)
-      Dotenv.load
 
       raise 'Missing ENV[SLACK_API_TOKEN]!' unless ENV['SLACK_API_TOKEN']
       raise 'Missing ENV[SLACK_CHANNEL_NAME]!' unless ENV['SLACK_CHANNEL_NAME']

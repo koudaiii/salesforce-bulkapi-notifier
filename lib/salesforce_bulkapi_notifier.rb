@@ -8,7 +8,6 @@ require 'slack-ruby-client'
 require 'faraday'
 require 'faraday_middleware'
 require 'httpclient'
-require 'dotenv'
 
 module SalesforceBulkAPINotifier
   extend Configuration

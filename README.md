@@ -27,7 +27,10 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 ## Requirements
 
 - Ruby 2.7 or later
-- Set env
+- Set enviroments
+  - this tool run using [OAuth username password flow](https://help.salesforce.com/articleView?id=remoteaccess_oauth_username_password_flow.htm&type=5)
+  - Slack API Token
+    - To integrate your bot with Slack, you must first create a new [Slack App](https://api.slack.com/apps).
 
 ## Installation
 
@@ -36,6 +39,7 @@ Add this line to your application's Gemfile:
 ```ruby
 gem 'salesforce-bulkapi-notifier'
 ```
+
 And then execute:
 
 ```console
@@ -54,11 +58,29 @@ TBD
 
 ## Usage
 
-TBD
+Please check [example code](./example)
+
+```ruby
+require 'salesforce-bulkapi-notifier'
+
+SalesforceBulkAPINotifier.configure do |c|
+  c.slack_api_token = ENV['SLACK_API_TOKEN'] # e.g. xxx-your-token-here
+  c.slack_channel_name = ENV['SLACK_CHANNEL_NAME'] # Supported multi channel by using `,`. e,g #general,@kou
+  c.salesforce_host = ENV['SALESFORCE_HOST'] # e.g. example.com
+  c.salesforce_user_id = ENV['SALESFORCE_USER_ID'] # e.g. your@example.com
+  c.salesforce_password = ENV['SALESFORCE_PASSWORD'] # e.g. your-password
+  c.salesforce_client_id = ENV['SALESFORCE_CLIENT_ID'] # e.g. your-client-id
+  c.salesforce_client_secret = ENV['SALESFORCE_CLIENT_SECRET'] # e.g. your-client-secret
+end
+
+SalesforceBulkAPINotifier.execute
+```
 
 ## Options
 
-TBD
+- `error_rate` # default 10
+- `interval_seconds` # default 60
+- `logger.level` # default debug
 
 ## Development
 

@@ -1,7 +1,7 @@
 # salesforce-bulkapi-notifier
 
 [![Docker Repository on Quay](https://quay.io/repository/koudaiii/salesforce-bulkapi-notifier/status "Docker Repository on Quay")](https://quay.io/repository/koudaiii/salesforce-bulkapi-notifier)
-[![GitHub release](https://img.shields.io/github/release/koudaiii/salesforce-bulkapi-notifier.svg)](https://github.com/koudaiii/salesforce-bulkapi-notifier/releases)
+[![Gem Version](https://badge.fury.io/rb/salesforce-bulkapi-notifier.svg)](https://badge.fury.io/rb/salesforce-bulkapi-notifier)
 
 ## Description
 salesforce-bulkapi-notifier notify to slack when failed jobs. e.g. When job state is Failed or Error is higher than Error rate.
